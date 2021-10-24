@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Экология Москвы</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="icon" href="ecoicon01_122073.ico">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js"></script>
+    
+    <style>
+        #map { 
+            width: 100%;  
+            height: 450px;
+        }
+        .mapboxgl-popup {
+            max-width: 400px;
+            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        }
+        #chartdiv {
+          width: 100%;
+          height: 500px;
+        }
+    </style>
+    
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="index.html" class="nav-link">Главная</a>
+      </li>
+      <!--<li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li>-->
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Navbar Search -->
+      <li class="nav-item">
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+          <i class="fas fa-search"></i>
+        </a>
+        <div class="navbar-search-block">
+          <form class="form-inline">
+            <div class="input-group input-group-sm">
+              <input class="form-control form-control-navbar" type="search" placeholder="Поиск" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index.html" class="brand-link">
+      <img src="https://ict.moscow/strategy-static/images/tild3630-3264-4461-b236-636339626135__logo-pm.svg" alt="Экология Москвы" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Экология Москвы</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/profile_.png" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Гость</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Поиск" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="./index.html" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Главная
+                <!--<span class="right badge badge-danger">New</span>-->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Данные
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="factories.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Заводы Москвы</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="traffic.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Трафик</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="wind.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ветер</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="houses.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Жилые дома</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="report.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Отчет</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+          <li class="nav-item">
+            <a href="api.html" class="nav-link">
+              <i class="nav-icon fas fa-robot"></i>
+              <p>
+                API
+              </p>
+            </a>
+           </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Мониторинг экологического состояния Москвы</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Главная</a></li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>1037</h3>
+
+                <p>Заводов</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-industry"></i>
+              </div>
+              <a href="factories.html" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>88<sup style="font-size: 20px">%</sup></h3>
+
+                <p>Индекс качества воздуха</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>10</h3>
+                <p>Точек наблюдений</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-eye"></i>
+              </div>
+              <a href="#" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>32156</h3>
+
+                <p>Жилых домов</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-house-user"></i>
+              </div>
+              <a href="./houses.html" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+          <!-- Left col -->
+          <section class="col-lg-12 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-map mr-1"></i>
+                  Точки наблюдений
+                </h3>
+                <div class="card-tools">
+                    
+                  <!--<ul class="nav nav-pills ml-auto">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                    </li>
+                  </ul>-->
+                </div>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content p-0">
+                  <div id="map"></div>
+                  <div align="right"><a target="_blank" href="https://msk-ecology.ru/data/meteo.csv">CSV</a></div>
+                </div>
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </section>
+        </div> 
+
+        <!-- Main row -->
+        <div class="row">
+          <!-- Left col -->
+          <section class="col-lg-6 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-map mr-1"></i>
+                  PM2.5 по месяцам
+                </h3>
+                </div>
+                    
+              <div class="card-body">
+                <div class="tab-content p-0" style="height:500px;">
+                 <iframe title="PM2.5 by months" aria-label="chart" id="datawrapper-chart-XQlzK" src="https://datawrapper.dwcdn.net/XQlzK/1/" scrolling="no" frameborder="0" style="border: none;" width="600" height="400"></iframe>
+                </div>
+              </div><!-- /.card-body -->
+            </div>
+            </section>
+            <!-- /.card -->
+          <!-- Left col -->
+          <section class="col-lg-6 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-map mr-1"></i>
+                  PM2.5 по дням
+                </h3>
+                </div>
+                    
+              <div class="card-body">
+                <div class="tab-content p-0" style="height:500px;">
+                 <iframe title="PM2.5 by day" aria-label="chart" id="datawrapper-chart-wKgGm" src="https://datawrapper.dwcdn.net/wKgGm/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="400"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(e){if(void 0!==e.data["datawrapper-height"]){var t=document.querySelectorAll("iframe");for(var a in e.data["datawrapper-height"])for(var r=0;r<t.length;r++){if(t[r].contentWindow===e.source)t[r].style.height=e.data["datawrapper-height"][a]+"px"}}}))}();</script>
+                </div>
+              </div><!-- /.card-body -->
+            </div>
+            </section>
+            <!-- /.card -->
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2021 <a href="index.html">EZK</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 0.0.1
+    </div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="dist/js/pages/dashboard.js"></script>
+
+<script>
+$(function() {
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY2hpZ3dlbCIsImEiOiJja29wajlpd2QwbHd4MnFudXpqemk5OWw1In0.YX8FaG6yo444a9-8WAM3MQ';
+    var map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/streets-v11', // style URL
+    zoom: 9.94, // starting zoom
+    center: [37.6935,55.7596] // starting center #9.94/55.7596/37.6935
+    });
+     
+    map.on('load', function () {
+
+    
+    map.addSource('faults2', {
+    type: 'geojson',
+    data: './data/meteo.geojson'
+    });
+     
+    map.addLayer({
+    'id': 'earthquakes-layer-2',
+    'type': 'circle',
+    'source': 'faults2',
+    'paint': {
+        'circle-radius': 8,
+        'circle-stroke-width': 2,
+        'circle-color': '#4065e9',
+        'circle-stroke-color': 'white'
+    }
+    
+    
+    });
+    map.on('click', 'earthquakes-layer-2', function (e) {
+    var coordinates = e.features[0].geometry.coordinates.slice();
+    var name = e.features[0].properties.name;
+     
+    // Ensure that if the map is zoomed out such that multiple
+    // copies of the feature are visible, the popup appears
+    // over the copy being pointed to.
+    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+    }
+     
+    new mapboxgl.Popup()
+        .setLngLat(coordinates)
+        .setHTML('<b>'+name+'</b><br/>')
+        .addTo(map);
+    });
+     
+    // Change the cursor to a pointer when the mouse is over the places layer.
+    map.on('mouseenter', 'earthquakes-layer-2', function () {
+    map.getCanvas().style.cursor = 'pointer';
+    });
+     
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'earthquakes-layer-2', function () {
+    map.getCanvas().style.cursor = '';
+    });
+
+
+map.addSource('trees', {
+'type': 'geojson',
+'data': './data/m_1km.geojson'
+});
+ 
+map.addLayer(
+{
+'id': 'trees-heat',
+'type': 'heatmap',
+'source': 'trees',
+'maxzoom': 15,
+'paint': {
+// increase weight as diameter breast height increases
+'heatmap-weight': {
+'type': 'exponential',
+'stops': [
+[5, 0],
+[62, 5]
+]
+},
+// increase intensity as zoom level increases
+'heatmap-intensity': {
+'stops': [
+[11, 1],
+[15, 3]
+]
+},
+// use sequential color palette to use exponentially as the weight increases
+'heatmap-color': [
+'interpolate',
+['linear'],
+['heatmap-density'],
+0,
+'rgba(236,222,239,0)',
+0.2,
+'rgb(208,209,230)',
+0.4,
+'rgb(166,189,219)',
+0.6,
+'rgb(103,169,207)',
+0.8,
+'rgb(28,144,153)'
+],
+// increase radius as zoom increases
+'heatmap-radius': {
+'stops': [
+[11, 15],
+[15, 20]
+]
+},
+// decrease opacity to transition into the circle layer
+'heatmap-opacity': {
+'default': 1,
+'stops': [
+[14, 1],
+[15, 0]
+]
+}
+}
+},
+'waterway-label'
+);
+ 
+map.addLayer(
+{
+'id': 'trees-point',
+'type': 'circle',
+'source': 'trees',
+'minzoom': 14,
+'paint': {
+// increase the radius of the circle as the zoom level and dbh value increases
+'circle-radius': {
+'property': 'dbh',
+'type': 'exponential',
+'stops': [
+[{ zoom: 15, value: 1 }, 5],
+[{ zoom: 15, value: 62 }, 10],
+[{ zoom: 22, value: 1 }, 20],
+[{ zoom: 22, value: 62 }, 50]
+]
+},
+'circle-color': {
+'property': 'dbh',
+'type': 'exponential',
+'stops': [
+[0, 'rgba(236,222,239,0)'],
+[10, 'rgb(236,222,239)'],
+[20, 'rgb(208,209,230)'],
+[30, 'rgb(166,189,219)'],
+[40, 'rgb(103,169,207)'],
+[50, 'rgb(28,144,153)'],
+[60, 'rgb(1,108,89)']
+]
+},
+'circle-stroke-color': 'white',
+'circle-stroke-width': 1,
+'circle-opacity': {
+'stops': [
+[14, 0],
+[15, 1]
+]
+}
+}
+},
+'waterway-label'
+);
+    
+    });
+});
+</script>
+</body>
+</html>

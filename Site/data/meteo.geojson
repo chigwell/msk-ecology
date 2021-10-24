@@ -1,0 +1,115 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 37.471434,55.658163 ]
+    },
+    "properties": {
+    "name":"Академика Анохина",
+    "FIELD4":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 37.535874,55.649412 ]
+    },
+    "properties": {
+    "name":"Бутлерова",
+    "FIELD4":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 37.71249,55.811801 ]
+    },
+    "properties": {
+    "name":"Глебовская",
+    "FIELD4":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 37.525158,55.833222 ]
+    },
+    "properties": {
+    "name":"Коптевский бул",
+    "FIELD4":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 37.751502,55.652695 ]
+    },
+    "properties": {
+    "name":"Марьино",
+    "FIELD4":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 37.612592,55.821154 ]
+    },
+    "properties": {
+    "name":"Останкино",
+    "FIELD4":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 37.658684,55.635129 ]
+    },
+    "properties": {
+    "name":"Пролетарский проспект",
+    "FIELD4":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 37.595584,55.759354 ]
+    },
+    "properties": {
+    "name":"Спиридоновка",
+    "FIELD4":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 37.426628,55.856324 ]
+    },
+    "properties": {
+    "name":"Туристская",
+    "FIELD4":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 37.6052377,55.715698 ]
+    },
+    "properties": {
+    "name":"Шаболовка",
+    "FIELD4":""
+    }
+  }
+]
+}
